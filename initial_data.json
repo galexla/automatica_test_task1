@@ -1,0 +1,34 @@
+[
+  {
+    "model": "api.worker",
+    "pk": 1,
+    "fields": {
+      "name": "John Doe",
+      "phone_number": "123456789"
+    }
+  },
+  {
+    "model": "api.worker",
+    "pk": 2,
+    "fields": {
+      "name": "Jane Smith",
+      "phone_number": "198765432"
+    }
+  },
+  {
+    "model": "api.branch",
+    "pk": 1,
+    "fields": {
+      "name": "Store A",
+      "worker": 1
+    }
+  },
+  {
+    "model": "api.branch",
+    "pk": 2,
+    "fields": {
+      "name": "Store B",
+      "worker": 2
+    }
+  }
+]
