@@ -14,7 +14,7 @@ class BranchListView(APIView):
         worker = request.user
         branch = Branch.objects.filter(worker=worker)
         if not branch:
-            return Response({"detail": "Нет привязанных филиалов"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'detail': 'Нет привязанных филиалов'}, status=status.HTTP_404_NOT_FOUND)
         serializer = BranchSerializer(branch, many=True)
         return Response(serializer.data)
 
@@ -31,8 +31,7 @@ class VisitCreateView(APIView):
         try:
             branch = Branch.objects.get(id=branch_id, worker=worker)
         except Branch.DoesNotExist:
-            return Response({"detail": "Несуществующий филиал или работник"},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response({'detail': 'Несуществующий филиал или работник'}, status=status.HTTP_400_BAD_REQUEST)
 
         visit = Visit.objects.create(branch=branch, worker=worker, latitude=latitude, longitude=longitude)
         serializer = VisitSerializer(visit)

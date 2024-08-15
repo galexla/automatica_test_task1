@@ -1,3 +1,5 @@
+from auditlog.models import LogEntry
+from auditlog.registry import auditlog
 from django.db import models
 
 
@@ -28,3 +30,8 @@ class Visit(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
     latitude = models.FloatField()
     longitude = models.FloatField()
+
+
+class ChangeTrackingComment(models.Model):
+    log_entry = models.OneToOneField(LogEntry, related_name='comment', on_delete=models.CASCADE)
+    comment = models.CharField(max_length=400)
