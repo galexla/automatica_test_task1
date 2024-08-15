@@ -1,3 +1,4 @@
+from auditlog.registry import auditlog
 from django.db import models
 
 
@@ -14,12 +15,18 @@ class Worker(models.Model):
         return True
 
 
+auditlog.register(Worker)
+
+
 class Branch(models.Model):
     name = models.CharField(max_length=255)
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
+
+auditlog.register(Branch)
 
 
 class Visit(models.Model):
