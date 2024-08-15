@@ -1,10 +1,13 @@
 from django.contrib import admin
-from .models import Worker, Branch, Visit
+
+from .forms import WorkerForm
+from .models import Branch, Visit, Worker
 
 
 @admin.register(Worker)
 class WorkerAdmin(admin.ModelAdmin):
     search_fields = ['name']
+    form = WorkerForm
 
 
 @admin.register(Branch)
